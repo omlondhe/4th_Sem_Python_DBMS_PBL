@@ -6,17 +6,16 @@
   border: 0.4px solid lightgrey;
   margin-top: 7px;
   margin-bottom: 7px;
-  padding-top: 4px;
-  padding-bottom: 7px;
+  padding-top: 11px;
+  padding-bottom: 11px;
 }
 
 .post__header {
   display: flex;
   align-items: center;
-  margin-left: 7px;
-  margin-right: 7px;
-  margin-bottom: 4px;
-  margin-top: 4px;
+  margin-left: 11px;
+  margin-right: 11px;
+  margin-bottom: 11px;
 }
 
 .post__header__names {
@@ -36,8 +35,9 @@
 }
 
 .post__image {
-  max-height: 500px;
-  overflow: hidden;
+  height: 500px;
+  border-top: 0.4px solid lightgrey;
+  border-bottom: 0.4px solid lightgrey;
 }
 .post__image img {
   height: 100%;
@@ -45,9 +45,9 @@
 }
 
 .post__footer {
-  margin-top: 4px;
-  margin-left: 7px;
-  margin-right: 7px;
+  margin-top: 11px;
+  margin-left: 11px;
+  margin-right: 11px;
 }
 
 .post__author {
@@ -56,4 +56,10 @@
 }
 .post__caption {
   font-size: 14px;
+}
+
+.post__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
