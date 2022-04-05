@@ -1,0 +1,7 @@
+.share__intent__share__icon__grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+}

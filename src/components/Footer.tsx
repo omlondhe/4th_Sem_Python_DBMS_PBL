@@ -43,15 +43,15 @@ function Footer() {
         to={"/profile"}
         className={
           location.pathname === "/profile"
-            ? "navbar__active__link navbar__link"
-            : "navbar__link"
+            ? "footer__active__link footer__link"
+            : "footer__link"
         }
       >
         <ProfileIcon
           className={
             location.pathname === "/profile"
-              ? "navbar__active__icon"
-              : "navbar__icon"
+              ? "footer__active__icon"
+              : "footer__icon"
           }
         />
       </Link>
