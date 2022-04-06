@@ -26,4 +26,7 @@
     margin-bottom: 2px;
     border-radius: 0;
   }
+  .post__image {
+    height: 400px;
+  }
 }

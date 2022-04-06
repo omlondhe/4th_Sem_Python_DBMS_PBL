@@ -29,7 +29,7 @@
 
 .search__input__label__focused {
   left: 7px;
-  top: 0px;
+  top: -2px;
   font-size: 12px;
   cursor: default;
 }
@@ -39,15 +39,14 @@
   border: none;
   width: 100%;
   padding: 11px;
-  padding-top: 4px;
+  padding-top: 9px;
   font-size: 14px;
+  border: 1px solid transparent;
   border-bottom: 1px solid lightgrey;
-  border-left: 1px solid transparent;
   transition: 271ms ease-in-out;
 }
 
 .search__input:focus {
-  border-bottom-color: black;
-  border-bottom-left-radius: 11px;
-  border-left: 1px solid black;
+  border-color: grey;
+  border-radius: 11px;
 }

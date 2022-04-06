@@ -2,7 +2,25 @@
   font-size: 14px;
   font-weight: 600;
 }
+
 .post__caption {
   font-size: 14px;
   padding-bottom: 11px;
+}
+
+.post__caption__text {
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 7px;
+}
+
+.post__caption__text__anchor {
+  text-transform: lowercase;
+  text-decoration: none;
+  color: grey !important;
+}
+
+.post__caption__text a {
+  text-decoration: none;
+  color: #01376a;
 }
