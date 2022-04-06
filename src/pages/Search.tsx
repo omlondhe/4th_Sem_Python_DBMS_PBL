@@ -1,4 +1,6 @@
 import { useState } from "react";
+import SearchInput from "../components/search/SearchInput";
+import SearchProfileListItem from "../components/search/SearchProfileListItem";
 import "../styles/pages/Search.css";
 
 function Search() {
@@ -6,23 +8,107 @@ function Search() {
 
   return (
     <div className="search">
-      <div className="search__input__box">
-        <label
-          className={
-            isFocused
-              ? "search__input__label search__input__label__focused"
-              : "search__input__label"
-          }
-          htmlFor="search__input"
-        >
-          Search by name or username
-        </label>
-        <input
-          id="search__input"
-          className="search__input"
-          type={"text"}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
+      <SearchInput isFocused={isFocused} setFocused={setFocused} />
+      <div className="search__list">
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
+        />
+        <SearchProfileListItem
+          name="Dummy name"
+          username="dummyname"
+          profileImage=""
         />
       </div>
     </div>
