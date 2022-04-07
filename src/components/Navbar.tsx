@@ -1,9 +1,13 @@
 import "../styles/components/Navbar.css";
 import HomeFilledIcon from "@mui/icons-material/HomeRounded";
-import FavoriteFilledIcon from "@mui/icons-material/FavoriteRounded";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import NotificationsFilledIcon from "@mui/icons-material/NotificationsRounded";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import ProfileIcon from "@mui/icons-material/PersonRounded";
+import ProfileOutlineIcon from "@mui/icons-material/PersonOutlineRounded";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link, useLocation } from "react-router-dom";
+import { BootstrapTooltip } from "../utilities/commons/BootstrapTooltip";
 
 function Navbar() {
   const location = useLocation();
@@ -17,70 +21,72 @@ function Navbar() {
         />
       </div>
       <div className="navbar__links">
-        <Link
-          to={"/"}
-          className={
-            location.pathname === "/"
-              ? "navbar__active__link navbar__link"
-              : "navbar__link"
-          }
-        >
-          <HomeFilledIcon
+        <BootstrapTooltip title="Home">
+          <Link
+            to={"/"}
             className={
               location.pathname === "/"
-                ? "navbar__active__icon"
-                : "navbar__icon"
+                ? "navbar__active__link navbar__link"
+                : "navbar__link"
             }
-          />
-        </Link>
-        <Link
-          to={"/favorites"}
-          className={
-            location.pathname === "/favorites"
-              ? "navbar__active__link navbar__link"
-              : "navbar__link"
-          }
-        >
-          <FavoriteFilledIcon
+          >
+            {location.pathname === "/" ? (
+              <HomeFilledIcon className={"navbar__active__icon"} />
+            ) : (
+              <HomeOutlinedIcon className={"navbar__icon"} />
+            )}
+          </Link>
+        </BootstrapTooltip>
+        <BootstrapTooltip title="Notifications">
+          <Link
+            to={"/notifications"}
             className={
-              location.pathname === "/favorites"
-                ? "navbar__active__icon"
-                : "navbar__icon"
+              location.pathname === "/notifications"
+                ? "navbar__active__link navbar__link"
+                : "navbar__link"
             }
-          />
-        </Link>
-        <Link
-          to={"/profile"}
-          className={
-            location.pathname === "/profile"
-              ? "navbar__active__link navbar__link"
-              : "navbar__link"
-          }
-        >
-          <ProfileIcon
+          >
+            {location.pathname === "/notifications" ? (
+              <NotificationsFilledIcon className={"navbar__active__icon"} />
+            ) : (
+              <NotificationsOutlinedIcon className={"navbar__icon"} />
+            )}
+          </Link>
+        </BootstrapTooltip>
+        <BootstrapTooltip title="Profile">
+          <Link
+            to={"/profile"}
             className={
               location.pathname === "/profile"
-                ? "navbar__active__icon"
-                : "navbar__icon"
+                ? "navbar__active__link navbar__link"
+                : "navbar__link"
             }
-          />
-        </Link>
-        <Link
-          to={"/search"}
-          className={
-            location.pathname === "/search"
-              ? "navbar__active__link navbar__link"
-              : "navbar__link"
-          }
-        >
-          <SearchOutlinedIcon
+          >
+            {location.pathname === "/profile" ? (
+              <ProfileIcon className={"navbar__active__icon"} />
+            ) : (
+              <ProfileOutlineIcon className={"navbar__icon"} />
+            )}
+          </Link>
+        </BootstrapTooltip>
+        <BootstrapTooltip title="Search">
+          <Link
+            to={"/search"}
             className={
               location.pathname === "/search"
-                ? "navbar__active__icon"
-                : "navbar__icon"
+                ? "navbar__active__link navbar__link"
+                : "navbar__link"
             }
-          />
-        </Link>
+          >
+            <SearchOutlinedIcon
+              className={
+                location.pathname === "/search"
+                  ? "navbar__active__icon"
+                  : "navbar__icon"
+              }
+            />
+          </Link>
+        </BootstrapTooltip>
       </div>
       <Link to={"/search"} className="navbar__search">
         <SearchOutlinedIcon className="navbar__search__icon" />

@@ -1,8 +1,11 @@
 import "../styles/components/Footer.css";
 import { Link, useLocation } from "react-router-dom";
 import HomeFilledIcon from "@mui/icons-material/HomeRounded";
-import FavoriteFilledIcon from "@mui/icons-material/FavoriteRounded";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ProfileIcon from "@mui/icons-material/PersonRounded";
+import ProfileOutlineIcon from "@mui/icons-material/PersonOutlineRounded";
+import NotificationsFilledIcon from "@mui/icons-material/NotificationsRounded";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsNoneRounded";
 
 function Footer() {
   const location = useLocation();
@@ -17,27 +20,25 @@ function Footer() {
             : "footer__link"
         }
       >
-        <HomeFilledIcon
-          className={
-            location.pathname === "/" ? "footer__active__icon" : "footer__icon"
-          }
-        />
+        {location.pathname === "/" ? (
+          <HomeFilledIcon className={"navbar__active__icon"} />
+        ) : (
+          <HomeOutlinedIcon className={"navbar__icon"} />
+        )}
       </Link>
       <Link
-        to={"/favorites"}
+        to={"/notifications"}
         className={
-          location.pathname === "/favorites"
+          location.pathname === "/notifications"
             ? "footer__active__link footer__link"
             : "footer__link"
         }
       >
-        <FavoriteFilledIcon
-          className={
-            location.pathname === "/favorites"
-              ? "footer__active__icon"
-              : "footer__icon"
-          }
-        />
+        {location.pathname === "/notifications" ? (
+          <NotificationsFilledIcon className={"navbar__active__icon"} />
+        ) : (
+          <NotificationsOutlinedIcon className={"navbar__icon"} />
+        )}
       </Link>
       <Link
         to={"/profile"}
@@ -47,13 +48,11 @@ function Footer() {
             : "footer__link"
         }
       >
-        <ProfileIcon
-          className={
-            location.pathname === "/profile"
-              ? "footer__active__icon"
-              : "footer__icon"
-          }
-        />
+        {location.pathname === "/profile" ? (
+          <ProfileIcon className={"navbar__active__icon"} />
+        ) : (
+          <ProfileOutlineIcon className={"navbar__icon"} />
+        )}
       </Link>
     </footer>
   );

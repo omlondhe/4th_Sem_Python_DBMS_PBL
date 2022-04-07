@@ -46,6 +46,10 @@ const listItemsData: PostOptionListTypes[] = [
 ];
 
 function PostOptions({ open, setOpen }: PostOptionsTypes) {
+  const performAction = (type: String) => {
+    if (type === "Cancel") setOpen(false);
+  };
+
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -63,7 +67,9 @@ function PostOptions({ open, setOpen }: PostOptionsTypes) {
           <List>
             {listItemsData.map((listItemData: PostOptionListTypes) => (
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton
+                  onClick={() => performAction(listItemData.text)}
+                >
                   <ListItemIcon>{listItemData.icon}</ListItemIcon>
                   <ListItemText primary={listItemData.text} />
                 </ListItemButton>
