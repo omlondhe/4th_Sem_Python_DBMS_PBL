@@ -1,0 +1,66 @@
+.register {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: url(https://w0.peakpx.com/wallpaper/1005/880/HD-wallpaper-white-abstract-background-ultra-artistic-abstract-white-design-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.register__form {
+  padding: 21px;
+  border-radius: 11px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.register__title {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.register__input {
+  font-size: 14px;
+  outline: none;
+  padding: 11px;
+  border-radius: 7px;
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 11px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.2);
+}
+
+.register__button {
+  font-size: 14px;
+  border-radius: 21px;
+  cursor: pointer;
+  padding: 17px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media only screen and (max-width: 550px) {
+  .register__form {
+    width: 300px;
+  }
+}
