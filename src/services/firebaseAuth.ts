@@ -28,7 +28,7 @@ export const sendEmailLogInLink = async (
   email: string
 ): Promise<SendEmailLinkReturnType> => {
   const actionCodeSettings = {
-    url: `http://localhost:3000/verify?login=true`,
+    url: `http://localhost:3000/verify?login=true&email=${email}`,
     handleCodeInApp: true,
   };
 
