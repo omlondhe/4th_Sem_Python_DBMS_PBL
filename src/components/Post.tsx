@@ -4,31 +4,30 @@ import ShareIntent from "./post/ShareIntent";
 import PostHeader from "./post/PostHeader";
 import PostFooter from "./post/PostFooter";
 import { ObjectFit } from "../utilities/types/CSSTypes";
+import { PostType } from "../utilities/types/PostType";
 
-function Post() {
-  const [image, setImage] = useState();
+function Post({ imageURL, caption, at, by, likes }: PostType) {
   const [objectFit, setObjectFit] = useState<ObjectFit>("cover");
   const [isShareIntentOpen, setShareIntentOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    fetch("https://dog.ceo/api/breeds/image/random")
-      .then((data) => data.json())
-      .then((data) => setImage(data["message"]));
-  }, []);
 
   return (
     <div className="post">
       <ShareIntent
         isShareIntentOpen={isShareIntentOpen}
         setShareIntentOpen={setShareIntentOpen}
-        image={image!}
+        image={imageURL!}
       />
       <PostHeader profileImage="" name="Dummy name" username="dummyname123" />
-      <div className="post__image">
-        <img src={image} alt="" style={{ objectFit: objectFit }} />
-      </div>
+      {imageURL ? (
+        <div className="post__image">
+          <img src={imageURL} alt="" style={{ objectFit: objectFit }} />
+        </div>
+      ) : (
+        <></>
+      )}
       <PostFooter
-        image={image!}
+        caption={caption}
+        image={imageURL!}
         objectFit={objectFit}
         setObjectFit={setObjectFit}
         setShareIntentOpen={setShareIntentOpen}
