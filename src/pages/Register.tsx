@@ -5,7 +5,7 @@ import {
   checkIfEmailExist,
   checkIfUsernameExist,
 } from "../services/auth/registerService";
-import SlideSnackbar from "../components/auth/SlideSnackbar";
+import SlideSnackbar from "../components/commons/SlideSnackbar";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 

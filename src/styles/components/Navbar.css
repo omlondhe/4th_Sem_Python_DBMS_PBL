@@ -61,19 +61,32 @@
   font-size: 24px !important;
 }
 
-.navbar__search {
+.navbar__search,
+.navbar__add__post {
   height: 100%;
   width: 44px;
   display: grid;
   place-items: center;
 }
 
-.navbar__search__icon {
+.navbar__search__icon,
+.navbar__add__post__icon {
+  color: grey;
+}
+
+.navbar__search__icon__active,
+.navbar__add__post__icon__active {
   color: black;
 }
 
+.navbar__mobile {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 @media only screen and (min-width: 450px) {
-  .navbar__search {
+  .navbar__mobile {
     display: none;
   }
 }

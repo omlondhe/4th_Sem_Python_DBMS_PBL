@@ -19,21 +19,21 @@ function ProfileTop() {
     <div
       className="profile__top"
       style={{
-        background: user.coverImage
-          ? `url(${user.coverImage})`
-          : "linear-gradient(grey, transparent)",
+        background: user?.coverImage
+          ? `url(${user?.coverImage})`
+          : "linear-gradient(lightgrey, transparent)",
       }}
     >
       <ShareIntent
-        image={`http://localhost:3000/profile/${user.id}`}
+        image={`http://localhost:3000/profile/${user?.id}`}
         isShareIntentOpen={openShare}
         setShareIntentOpen={setOpenShare}
       />
       <div className="profile__top__main">
         <Avatar
           className="profile__top__avatar"
-          alt={user.name}
-          src={user.profileImage}
+          alt={user?.name}
+          src={user?.profileImage}
         />
         <div className="profile__top__buttons">
           <IconButton className="profile__top__button">
@@ -58,10 +58,10 @@ function ProfileTop() {
             />
           </IconButton>
         </div>
-        <p className="profile__top__name">{user.name}</p>
-        <p className="profile__top__username">{user.username}</p>
+        <p className="profile__top__name">{user?.name}</p>
+        <p className="profile__top__username">{user?.username}</p>
         <p className="profile__top__bio">
-          <Linkify>{user.bio}</Linkify>
+          <Linkify>{user?.bio}</Linkify>
         </p>
       </div>
     </div>

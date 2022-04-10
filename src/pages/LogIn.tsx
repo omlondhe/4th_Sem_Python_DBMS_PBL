@@ -2,7 +2,7 @@ import { useState } from "react";
 import { checkIfEmailExist } from "../services/auth/registerService";
 import { sendEmailLogInLink } from "../services/firebaseAuth";
 import "../styles/pages/LogIn.css";
-import SlideSnackbar from "../components/auth/SlideSnackbar";
+import SlideSnackbar from "../components/commons/SlideSnackbar";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 

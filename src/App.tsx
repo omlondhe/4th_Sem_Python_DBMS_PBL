@@ -13,6 +13,7 @@ import { auth } from "./services/firebase";
 import { getUserData } from "./services/user/userService";
 import { useStateValue } from "./context/StateProvider";
 import { actionTypes } from "./context/reducer";
+import AddPost from "./pages/AddPost";
 
 function App() {
   const location = useLocation();
@@ -63,6 +64,7 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verify" element={<Verify />} />
+        <Route path="/add-post" element={<AddPost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<Search />} />
       </Routes>

@@ -6,6 +6,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsNoneRoun
 import ProfileIcon from "@mui/icons-material/PersonRounded";
 import ProfileOutlineIcon from "@mui/icons-material/PersonOutlineRounded";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import AddPostIcon from "@mui/icons-material/AddBoxOutlined";
 import { Link, useLocation } from "react-router-dom";
 import { BootstrapTooltip } from "../utilities/commons/BootstrapTooltip";
 
@@ -87,10 +88,45 @@ function Navbar() {
             />
           </Link>
         </BootstrapTooltip>
+        <BootstrapTooltip title="Add new post">
+          <Link
+            to={"/add-post"}
+            className={
+              location.pathname === "/add-post"
+                ? "navbar__active__link navbar__link"
+                : "navbar__link"
+            }
+          >
+            <AddPostIcon
+              className={
+                location.pathname === "/add-post"
+                  ? "navbar__active__icon"
+                  : "navbar__icon"
+              }
+            />
+          </Link>
+        </BootstrapTooltip>
       </div>
-      <Link to={"/search"} className="navbar__search">
-        <SearchOutlinedIcon className="navbar__search__icon" />
-      </Link>
+      <div className="navbar__mobile">
+        <Link to={"/search"} className={"navbar__search"}>
+          <SearchOutlinedIcon
+            className={
+              location.pathname === "/search"
+                ? "navbar__search__icon__active"
+                : "navbar__search__icon"
+            }
+          />
+        </Link>
+        <Link to={"/add-post"} className={"navbar__add__post"}>
+          <AddPostIcon
+            className={
+              location.pathname === "/add-post"
+                ? "navbar__add__post__icon__active"
+                : "navbar__add__post__icon"
+            }
+          />
+        </Link>
+      </div>
     </nav>
   );
 }
