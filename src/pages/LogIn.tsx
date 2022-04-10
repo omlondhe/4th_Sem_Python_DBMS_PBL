@@ -4,6 +4,7 @@ import { sendEmailLogInLink } from "../services/firebaseAuth";
 import "../styles/pages/LogIn.css";
 import SlideSnackbar from "../components/auth/SlideSnackbar";
 import { CircularProgress } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function LogIn() {
   const [email, setEmail] = useState<string>("");
@@ -62,7 +63,21 @@ function LogIn() {
             style={{ width: 24, height: 24, color: "grey", marginTop: 7 }}
           />
         ) : (
-          <button className="login__button">Log in</button>
+          <div>
+            <button className="login__button">Log in</button>
+            <Link
+              to={"/register"}
+              className="register__button"
+              style={{
+                marginTop: 7,
+                textDecoration: "none",
+                color: "black",
+                marginLeft: 4,
+              }}
+            >
+              Register instead
+            </Link>
+          </div>
         )}
       </form>
     </div>

@@ -23,11 +23,11 @@ function Verify() {
       }
       signInWithEmailLink(auth, email!, window.location.href)
         .then((_) => {
-          console.log("...");
           if (!query.get("login")) {
+            const uid = auth.currentUser?.uid;
             const name = query.get("name");
             const username = query.get("username");
-            registerUser(name!, username!, email!).then(() => {
+            registerUser(uid!, name!, username!, email!).then(() => {
               // navigate("/");
             });
           }

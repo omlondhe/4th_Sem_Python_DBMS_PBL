@@ -4,39 +4,64 @@ import EditIcon from "@mui/icons-material/ModeEdit";
 import ShareIcon from "@mui/icons-material/ShareRounded";
 import LogoutIcon from "@mui/icons-material/LogoutRounded";
 import "../../styles/components/profile/ProfileTop.css";
+import { auth } from "../../services/firebase";
+import { useNavigate } from "react-router-dom";
+import { useStateValue } from "../../context/StateProvider";
+import ShareIntent from "../../components/post/ShareIntent";
+import { useState } from "react";
 
 function ProfileTop() {
+  const navigate = useNavigate();
+  const [{ user }, dispatch] = useStateValue();
+  const [openShare, setOpenShare] = useState<boolean>(false);
+
   return (
-    <div className="profile__top">
+    <div
+      className="profile__top"
+      style={{
+        background: user.coverImage
+          ? `url(${user.coverImage})`
+          : "linear-gradient(grey, transparent)",
+      }}
+    >
+      <ShareIntent
+        image={`http://localhost:3000/profile/${user.id}`}
+        isShareIntentOpen={openShare}
+        setShareIntentOpen={setOpenShare}
+      />
       <div className="profile__top__main">
         <Avatar
           className="profile__top__avatar"
-          alt="Dummy name"
-          src="https://images.dog.ceo/breeds/samoyed/n02111889_1485.jpg"
+          alt={user.name}
+          src={user.profileImage}
         />
         <div className="profile__top__buttons">
           <IconButton className="profile__top__button">
             <EditIcon className="profile__top__button__icon" />
           </IconButton>
-          <IconButton className="profile__top__button">
+          <IconButton
+            className="profile__top__button"
+            onClick={() => setOpenShare(true)}
+          >
             <ShareIcon className="profile__top__button__icon" />
           </IconButton>
-          <IconButton className="profile__top__button">
+          <IconButton
+            className="profile__top__button"
+            onClick={() => {
+              auth.signOut();
+              navigate("/register");
+            }}
+          >
             <LogoutIcon
               className="profile__top__button__icon"
               style={{ color: "red" }}
             />
           </IconButton>
         </div>
-        <p className="profile__top__name">Dummy name</p>
-        <p className="profile__top__username">dummyname123</p>
+        <p className="profile__top__name">{user.name}</p>
+        <p className="profile__top__username">{user.username}</p>
         <p className="profile__top__bio">
-          <Linkify>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam magni
-            repellat sint nihil inventore. Quia at adipisci eaque cumque omnis,
-            quaerat nihil, nisi error esse culpa, voluptates tempora optio autem
-            nulla odit.
-          </Linkify>
+          <Linkify>{user.bio}</Linkify>
         </p>
       </div>
     </div>

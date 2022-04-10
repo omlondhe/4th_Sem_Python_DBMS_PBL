@@ -7,6 +7,7 @@ import {
 } from "../services/auth/registerService";
 import SlideSnackbar from "../components/auth/SlideSnackbar";
 import { CircularProgress } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState<string>("");
@@ -34,7 +35,7 @@ function Register() {
       } else if (await checkIfEmailExist(email)) {
         setShowSnackbar(true);
         setSeverity("error");
-        setMessage("Email already exist.");
+        setMessage("Email already exist, try logging in.");
       } else {
         const result = await sendEmailSignInLink(name!, email!, username!);
         if (result.message === "Success") {
@@ -97,7 +98,21 @@ function Register() {
             style={{ width: 24, height: 24, color: "grey", marginTop: 7 }}
           />
         ) : (
-          <button className="register__button">Register</button>
+          <div>
+            <button className="register__button">Register</button>
+            <Link
+              to={"/login"}
+              className="register__button"
+              style={{
+                marginTop: 7,
+                textDecoration: "none",
+                color: "black",
+                marginLeft: 4,
+              }}
+            >
+              Login instead
+            </Link>
+          </div>
         )}
       </form>
     </div>

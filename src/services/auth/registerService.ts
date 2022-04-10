@@ -27,17 +27,16 @@ export const checkIfUsernameExist = async (
 };
 
 export const registerUser = async (
+  uid: string,
   name: string,
   username: string,
   email: string
 ) => {
   const data = new FormData();
+  data.append("uid", uid);
   data.append("name", name);
   data.append("email", email);
   data.append("username", username);
-  data.append("bio", "");
-  data.append("profileImage", "");
-  data.append("coverImage", "");
   await axios({
     method: "POST",
     url: `http://127.0.0.1:5100/register`,
