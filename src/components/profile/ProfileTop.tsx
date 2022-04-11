@@ -9,11 +9,23 @@ import { useNavigate } from "react-router-dom";
 import { useStateValue } from "../../context/StateProvider";
 import ShareIntent from "../../components/post/ShareIntent";
 import { useState } from "react";
+import EditProfileModal from "./EditProfileModal";
+import SlideSnackbar from "../commons/SlideSnackbar";
+import ImageOptionsIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
+import ImageEditOptions from "./ImageEditOptions";
 
 function ProfileTop() {
   const navigate = useNavigate();
   const [{ user }, dispatch] = useStateValue();
   const [openShare, setOpenShare] = useState<boolean>(false);
+  const [forType, setForType] = useState<"profile" | "cover">("cover");
+  const [openImageOptions, setOpenImageOptions] = useState<boolean>(false);
+  const [isEditIntentOpen, setIsEditIntentOpen] = useState<boolean>(false);
+  const [showSnackbar, setShowSnackbar] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  const [severity, setSeverity] = useState<
+    "success" | "info" | "warning" | "error"
+  >("error");
 
   return (
     <div
@@ -24,10 +36,40 @@ function ProfileTop() {
           : "linear-gradient(lightgrey, transparent)",
       }}
     >
+      <IconButton
+        className="profile__top__cover__image__edit"
+        onClick={() => {
+          setForType("cover");
+          setOpenImageOptions(true);
+        }}
+      >
+        <ImageOptionsIcon className="profile__top__image__edit__icon" />
+      </IconButton>
+      <ImageEditOptions
+        forType={forType}
+        open={openImageOptions}
+        setOpen={setOpenImageOptions}
+        setMessage={setMessage}
+        setSeverity={setSeverity}
+        setShowSnackbar={setShowSnackbar}
+      />
+      <EditProfileModal
+        isEditIntentOpen={isEditIntentOpen}
+        setIsEditIntentOpen={setIsEditIntentOpen}
+        setMessage={setMessage}
+        setSeverity={setSeverity}
+        setShowSnackbar={setShowSnackbar}
+      />
       <ShareIntent
         image={`http://localhost:3000/profile/${user?.id}`}
         isShareIntentOpen={openShare}
         setShareIntentOpen={setOpenShare}
+      />
+      <SlideSnackbar
+        message={message}
+        severity={severity}
+        setShowSnackbar={setShowSnackbar}
+        showSnackbar={showSnackbar}
       />
       <div className="profile__top__main">
         <Avatar
@@ -35,8 +77,20 @@ function ProfileTop() {
           alt={user?.name}
           src={user?.profileImage}
         />
+        <IconButton
+          className="profile__top__profile__image__edit"
+          onClick={() => {
+            setForType("profile");
+            setOpenImageOptions(true);
+          }}
+        >
+          <ImageOptionsIcon className="profile__top__image__edit__icon" />
+        </IconButton>
         <div className="profile__top__buttons">
-          <IconButton className="profile__top__button">
+          <IconButton
+            className="profile__top__button"
+            onClick={() => setIsEditIntentOpen(true)}
+          >
             <EditIcon className="profile__top__button__icon" />
           </IconButton>
           <IconButton

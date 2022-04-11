@@ -128,6 +128,7 @@ function AddPost() {
             <TextareaAutosize
               className="add__post__caption__textarea"
               placeholder="Type caption here..."
+              value={caption}
               onChange={(e) => setCaption(e.target.value)}
             />
           </p>
