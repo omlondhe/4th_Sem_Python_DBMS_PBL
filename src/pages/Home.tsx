@@ -3,10 +3,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Post from "../components/Post";
 import { useEffect, useState } from "react";
 import { PostType } from "../utilities/types/PostType";
-import { getPosts } from "../services/post/getPostsService";
+import { getPosts, getPostsLength } from "../services/post/getPostsService";
+import { CircularProgress } from "@mui/material";
 
 function Home() {
   const [skips, setSkips] = useState<number>(0);
+  const [totalDataLength, setTotalDataLength] = useState<number>(0);
   const [posts, setPosts] = useState<PostType[]>([]);
 
   const fetchData = async () => {
@@ -16,6 +18,7 @@ function Home() {
 
   useEffect(() => {
     fetchData();
+    getPostsLength().then((length) => setTotalDataLength(length));
   }, []);
 
   console.log(posts);
@@ -25,8 +28,12 @@ function Home() {
       <InfiniteScroll
         dataLength={posts.length}
         next={fetchData}
-        hasMore={true}
-        loader={<h4>Loading...</h4>}
+        hasMore={skips < totalDataLength}
+        loader={
+          <CircularProgress
+            style={{ width: 24, height: 24, color: "grey", marginTop: 7 }}
+          />
+        }
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all</b>

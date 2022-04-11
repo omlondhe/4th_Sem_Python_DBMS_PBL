@@ -6,17 +6,14 @@ import "../../styles/components/post/PostFooter.css";
 function PostFooter({
   image,
   caption,
+  username,
   objectFit,
   setObjectFit,
   setShareIntentOpen,
 }: PostFooterTypes) {
   return (
     <div className="post__footer">
-      {caption ? (
-        <PostCaption username={"dummyname123"} caption={caption} />
-      ) : (
-        <></>
-      )}
+      {caption ? <PostCaption username={username} caption={caption} /> : <></>}
       <PostActions
         image={image}
         objectFit={objectFit}
