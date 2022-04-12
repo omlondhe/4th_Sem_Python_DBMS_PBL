@@ -17,11 +17,11 @@ function Home() {
   };
 
   useEffect(() => {
-    fetchData();
-    getPostsLength().then((length) => setTotalDataLength(length));
+    getPostsLength().then(async (length) => {
+      setTotalDataLength(length);
+      await fetchData();
+    });
   }, []);
-
-  console.log(posts);
 
   return (
     <div className="home">
@@ -39,20 +39,11 @@ function Home() {
             <b>Yay! You have seen it all</b>
           </p>
         }
-        // // below props only if you need pull down functionality
-        // refreshFunction={this.refresh}
-        // pullDownToRefresh
-        // pullDownToRefreshThreshold={50}
-        // pullDownToRefreshContent={
-        //   <h3 style={{ textAlign: 'center' }}>&#8595; Pull down to refresh</h3>
-        // }
-        // releaseToRefreshContent={
-        //   <h3 style={{ textAlign: 'center' }}>&#8593; Release to refresh</h3>
-        // }
       >
         {posts.map((post) => (
           <Post
-            key={`${post.by}-${post.at}-${Date.now()}`}
+            key={`${post.id}-${post.at}-${Date.now()}`}
+            id={post.id}
             at={post.at}
             by={post.by}
             caption={post.caption}

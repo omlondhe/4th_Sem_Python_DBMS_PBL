@@ -5,9 +5,17 @@ import MoreIcon from "@mui/icons-material/MoreHoriz";
 import { IconButton } from "@mui/material";
 import PostOptions from "./PostOptions";
 import { useState } from "react";
+import { useStateValue } from "../../context/StateProvider";
 
-function PostHeader({ profileImage, name, username }: PostHeaderTypes) {
+function PostHeader({
+  id,
+  profileImage,
+  name,
+  username,
+  postImage,
+}: PostHeaderTypes) {
   const [open, setOpen] = useState(false);
+  const [{ user }, dispatch] = useStateValue();
 
   return (
     <div className="post__header">
@@ -16,10 +24,19 @@ function PostHeader({ profileImage, name, username }: PostHeaderTypes) {
         <p className="post__header__name">{name}</p>
         <p className="post__header__username">{username}</p>
       </div>
-      <PostOptions open={open} setOpen={setOpen} />
-      <IconButton onClick={() => setOpen(true)}>
-        <MoreIcon />
-      </IconButton>
+      <PostOptions
+        id={id}
+        postImage={postImage}
+        open={open}
+        setOpen={setOpen}
+      />
+      {username === user?.username ? (
+        <IconButton onClick={() => setOpen(true)}>
+          <MoreIcon />
+        </IconButton>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

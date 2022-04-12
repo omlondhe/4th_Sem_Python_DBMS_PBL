@@ -1,13 +1,16 @@
 .profile__top {
   width: calc(100% - 14px);
   max-width: 700px;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   border-radius: 0 0 7px 7px;
   padding-bottom: 11px;
+  padding-top: 151px;
   border: 2px solid white;
   border-top: none;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile__top__cover__image__edit {
@@ -27,7 +30,6 @@
   border-radius: 7px;
   padding: 14px;
   padding-top: 71px;
-  margin-top: 151px;
   position: relative;
   border-top: 1px solid white;
   border-left: 1px solid white;

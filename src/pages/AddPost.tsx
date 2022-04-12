@@ -19,8 +19,10 @@ import { useState } from "react";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../services/firebase";
 import { addPostToDatabase } from "../services/post/addPostService";
+import { useNavigate } from "react-router-dom";
 
 function AddPost() {
+  const navigate = useNavigate();
   const [{ user }, dispatch] = useStateValue();
   const [caption, setCaption] = useState<string>("");
   const [image, setImage] = useState<FileList | null>(null);
@@ -59,6 +61,7 @@ function AddPost() {
       setMessage("Post added successfully!");
       setSeverity("success");
       setShowSnackbar(true);
+      navigate("/");
     }
     setLoading(false);
   };

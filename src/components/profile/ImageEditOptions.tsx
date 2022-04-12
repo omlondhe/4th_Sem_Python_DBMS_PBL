@@ -170,7 +170,7 @@ function ImageEditOptions({
           ) : (
             <List>
               {listItemsData.map((listItemData: ImageEditOptionListTypes) => (
-                <ListItem disablePadding>
+                <ListItem disablePadding key={`${listItemData.text}`}>
                   <ListItemButton
                     onClick={() => performAction(listItemData.text)}
                   >

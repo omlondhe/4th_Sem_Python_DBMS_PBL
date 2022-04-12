@@ -2,7 +2,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import GotoIcon from "@mui/icons-material/CallMadeRounded";
+import DeleteIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import CopyLinkIcon from "@mui/icons-material/CopyAllRounded";
 import CloseIcon from "@mui/icons-material/CloseRounded";
 import {
@@ -10,12 +10,18 @@ import {
   PostOptionsTypes,
 } from "../../utilities/types/PostOptionsTypes";
 import {
+  CircularProgress,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import { deletePost } from "../../services/post/getPostsService";
+import { deleteObject, ref } from "firebase/storage";
+import { storage } from "../../services/firebase";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute" as "absolute",
@@ -32,12 +38,8 @@ const style = {
 
 const listItemsData: PostOptionListTypes[] = [
   {
-    icon: <GotoIcon />,
-    text: "Go to post",
-  },
-  {
-    icon: <CopyLinkIcon />,
-    text: "Copy link",
+    icon: <DeleteIcon />,
+    text: "Delete Post",
   },
   {
     icon: <CloseIcon />,
@@ -45,9 +47,21 @@ const listItemsData: PostOptionListTypes[] = [
   },
 ];
 
-function PostOptions({ open, setOpen }: PostOptionsTypes) {
-  const performAction = (type: String) => {
-    if (type === "Cancel") setOpen(false);
+function PostOptions({ id, open, setOpen, postImage }: PostOptionsTypes) {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const performAction = async (type: String) => {
+    if (type === listItemsData[1].text) setOpen(false);
+    else if (type === listItemsData[0].text) {
+      setLoading(true);
+      if (postImage) {
+        await deleteObject(await ref(storage, postImage));
+      }
+      await deletePost(id);
+      window.location.reload();
+      setLoading(false);
+      setOpen(false);
+    }
   };
 
   return (
@@ -64,18 +78,24 @@ function PostOptions({ open, setOpen }: PostOptionsTypes) {
     >
       <Fade in={open}>
         <Box sx={style}>
-          <List>
-            {listItemsData.map((listItemData: PostOptionListTypes) => (
-              <ListItem disablePadding>
-                <ListItemButton
-                  onClick={() => performAction(listItemData.text)}
-                >
-                  <ListItemIcon>{listItemData.icon}</ListItemIcon>
-                  <ListItemText primary={listItemData.text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+          {loading ? (
+            <CircularProgress
+              style={{ width: 24, height: 24, color: "grey", marginTop: 7 }}
+            />
+          ) : (
+            <List>
+              {listItemsData.map((listItemData: PostOptionListTypes) => (
+                <ListItem disablePadding key={`${listItemData.text}`}>
+                  <ListItemButton
+                    onClick={() => performAction(listItemData.text)}
+                  >
+                    <ListItemIcon>{listItemData.icon}</ListItemIcon>
+                    <ListItemText primary={listItemData.text} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          )}
         </Box>
       </Fade>
     </Modal>

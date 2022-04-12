@@ -26,7 +26,7 @@ function Footer() {
           <HomeOutlinedIcon className={"navbar__icon"} />
         )}
       </Link>
-      <Link
+      {/* <Link
         to={"/notifications"}
         className={
           location.pathname === "/notifications"
@@ -39,7 +39,7 @@ function Footer() {
         ) : (
           <NotificationsOutlinedIcon className={"navbar__icon"} />
         )}
-      </Link>
+      </Link> */}
       <Link
         to={"/profile"}
         className={
